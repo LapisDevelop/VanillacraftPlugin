@@ -1,0 +1,15 @@
+package com.lapisdev.vanillacraft.database;
+
+import static com.lapisdev.vanillacraft.database.Database.createTable;
+
+public class DatabaseTables {
+    public static void createTables() {
+        createTable("player (player_id INTEGER PRIMARY KEY AUTOINCREMENT, discord_uuid TEXT, minecraft_uuid TEXT)");
+        createTable("region (region_id INTEGER PRIMARY KEY AUTOINCREMENT, regionName TEXT, spawn_x DOUBLE, spawn_y DOUBLE, spawn_z DOUBLE, leader_id INTEGER)");
+        createTable("player_region (player_id INTEGER PRIMARY KEY, region_id INTEGER)");
+        createTable("team (team_id INTEGER PRIMARY KEY AUTOINCREMENT, teamName TEXT, team_suffix TEXT, team_leader INTEGER)");
+        createTable("player_team (player_id INTEGER PRIMARY KEY, team_id INTEGER)");
+        createTable("staff_role (staff_role_id INTEGER PRIMARY KEY AUTOINCREMENT, staff_role_name TEXT, staff_role_luckperms_group TEXT)");
+        createTable("player_staff_role (player_id INTEGER PRIMARY KEY, staff_role_id INTEGER)");
+    }
+}
