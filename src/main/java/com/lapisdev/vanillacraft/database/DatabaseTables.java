@@ -13,7 +13,9 @@ public class DatabaseTables {
             createTable("team (team_id INTEGER PRIMARY KEY AUTOINCREMENT, team_name TEXT, team_suffix TEXT, team_leader INTEGER)");
             createTable("player_team (player_id INTEGER PRIMARY KEY, team_id INTEGER)");
             createTable("staff_role (staff_role_id INTEGER PRIMARY KEY AUTOINCREMENT, staff_role_name TEXT, staff_role_luckperms_group TEXT)");
-            createTable("player_staff_role (player_id INTEGER PRIMARY KEY, staff_role_id INTEGER PRIMARY KEY)");
+            createTable("player_staff_role (player_id INTEGER, staff_role_id INTEGER)");
+
+            createTable("player_login (player_id INTEGER, login_time INTEGER, login_world STRING, login_x DOUBLE, login_y DOUBLE, login_z DOUBLE)");
         });
     }
 }
