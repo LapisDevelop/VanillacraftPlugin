@@ -15,15 +15,17 @@ import java.util.UUID;
 public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        Player minecraftPlayer = e.getPlayer();
-        UUID minecraftUuid = minecraftPlayer.getUniqueId();
-        ServerPlayer player = ServerPlayer.fromMinecraftUuid(minecraftUuid);
-        if (player == null) {
-            ServerPlayer loggedInPlayer = new ServerPlayer();
-            loggedInPlayer.minecraftUuid = minecraftUuid;
-            Kick kick = new Kick(loggedInPlayer, Component.text("You haven't been whitelisted, or haven't linked your account.\nPlease link using the #get-whitelisted channel on discord!"));
-            RunTask.sync(kick::execute);
-        }
-        // todo: get player's region and check it exists
+        RunTask.async((_) -> {
+            Player minecraftPlayer = e.getPlayer();
+            UUID minecraftUuid = minecraftPlayer.getUniqueId();
+            ServerPlayer player = ServerPlayer.fromMinecraftUuid(minecraftUuid);
+            if (player == null) {
+                ServerPlayer loggedInPlayer = new ServerPlayer();
+                loggedInPlayer.minecraftUuid = minecraftUuid;
+                Kick kick = new Kick(loggedInPlayer, Component.text("You haven't been whitelisted, or haven't linked your account.\nPlease link using the #get-whitelisted channel on discord!"));
+                RunTask.sync(kick::execute);
+            }
+            // todo: get player's region and check it exists
+        });
     }
 }
