@@ -1,17 +1,15 @@
 package com.lapisdev.vanillacraft;
 
 import com.lapisdev.vanillacraft.database.Database;
-import com.lapisdev.vanillacraft.database.DatabaseTables;
 import com.lapisdev.vanillacraft.discord.DiscordModule;
 import com.lapisdev.vanillacraft.kick.KickModule;
 import com.lapisdev.vanillacraft.link.LinkModule;
+import com.lapisdev.vanillacraft.log.login.LoginModule;
+import com.lapisdev.vanillacraft.newspawn.NewSpawnModule;
 import com.lapisdev.vanillacraft.whitelist.WhitelistModule;
-import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.function.Consumer;
 
 public final class VanillacraftPlugin extends JavaPlugin {
 
@@ -22,6 +20,8 @@ public final class VanillacraftPlugin extends JavaPlugin {
         new LinkModule();
         new KickModule();
         new WhitelistModule();
+        new LoginModule();
+        new NewSpawnModule();
     }
 
     @Override

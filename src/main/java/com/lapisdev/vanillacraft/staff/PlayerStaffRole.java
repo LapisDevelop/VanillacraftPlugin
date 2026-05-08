@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static com.lapisdev.vanillacraft.database.Query.*;
+import static com.lapisdev.vanillacraft.database.Query.sqlInsert;
+import static com.lapisdev.vanillacraft.database.Query.sqlSelect;
 
 public class PlayerStaffRole {
     public ServerPlayer player;
