@@ -12,6 +12,10 @@ public class RunTask {
         Bukkit.getServer().getScheduler().runTask(plugin(), runnable);
     }
 
+    public static void sync(Runnable runnable, long tickDelay) {
+        Bukkit.getServer().getScheduler().runTaskLater(plugin(), runnable, tickDelay);
+    }
+
     public static void async(Consumer<ScheduledTask> consumer) {
         Bukkit.getServer().getAsyncScheduler().runNow(plugin(), consumer);
     }
