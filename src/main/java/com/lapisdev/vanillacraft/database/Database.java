@@ -1,11 +1,8 @@
 package com.lapisdev.vanillacraft.database;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
-import static com.lapisdev.vanillacraft.VanillacraftPlugin.async;
 import static com.lapisdev.vanillacraft.VanillacraftPlugin.plugin;
 
 public class Database {
@@ -31,12 +28,10 @@ public class Database {
     }
 
     public static void createTable(String table) {
-        async((task) -> {
-            try {
-                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + table);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        try {
+            conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + table);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
