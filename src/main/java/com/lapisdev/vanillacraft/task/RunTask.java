@@ -3,6 +3,7 @@ package com.lapisdev.vanillacraft.task;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import static com.lapisdev.vanillacraft.VanillacraftPlugin.plugin;
@@ -18,5 +19,9 @@ public class RunTask {
 
     public static void async(Consumer<ScheduledTask> consumer) {
         Bukkit.getServer().getAsyncScheduler().runNow(plugin(), consumer);
+    }
+
+    public static void async(Consumer<ScheduledTask> consumer, long tickDelay) {
+        Bukkit.getServer().getAsyncScheduler().runDelayed(plugin(), consumer, tickDelay*50, TimeUnit.MILLISECONDS);
     }
 }
