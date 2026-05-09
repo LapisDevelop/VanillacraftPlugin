@@ -14,9 +14,12 @@ public class GameChatModule {
         handle(new GameEventListener());
         jda.addEventListener(new DiscordChatListener());
         jda.addEventListener(new PlayerlistCmd());
+
+        GameEventListener.startup();
     }
 
     public void disable() {
         if (GameChatDiscord.lastWebhook != null) GameChatDiscord.lastWebhook.delete().queue();
+        GameEventListener.shutdown();
     }
 }

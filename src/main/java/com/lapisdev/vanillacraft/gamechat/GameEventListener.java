@@ -94,4 +94,16 @@ public class GameEventListener implements Listener {
                     .build());
         });
     }
+
+    public static void startup() {
+        GameChatModule.discordChatChannel.sendMessageEmbeds(new Embed().resultColor()
+                .title(":green_square: Vanillacraft has started up!")
+                .build()).queue();
+    }
+
+    public static void shutdown() {
+        GameChatModule.discordChatChannel.sendMessageEmbeds(new Embed().errorColor()
+                .title(":red_square: Vanillacraft is shutting down, it will be back up within a few minutes!")
+                .build()).queue();
+    }
 }
