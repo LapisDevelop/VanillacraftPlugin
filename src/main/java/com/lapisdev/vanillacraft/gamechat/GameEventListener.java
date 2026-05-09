@@ -4,10 +4,13 @@ import com.lapisdev.vanillacraft.discord.Embed;
 import com.lapisdev.vanillacraft.player.ServerPlayer;
 import com.lapisdev.vanillacraft.task.RunTask;
 import net.dv8tion.jda.api.entities.User;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -58,4 +61,23 @@ public class GameEventListener implements Listener {
                     .build());
         });
     }
+
+    @EventHandler
+    public void onAdvancement(PlayerAdvancementDoneEvent e) {
+        RunTask.async(_ -> {
+            ServerPlayer player = ServerPlayer.fromMinecraftUuid(e.getPlayer().getUniqueId());
+            Advancement advancement = e.getAdvancement();
+            Component advancementNameComponent = advancement.getDisplay() != null ? advancement.getDisplay().title() : Component.text(advancement.getKey().getKey());
+            String advancementName = PlainTextComponentSerializer.plainText().serialize(advancementNameComponent);
+            Component advancementInfoComponent = advancement.getDisplay() != null ? advancement.getDisplay().description() : Component.text("No advancement information found.");
+            String advancementInfo = PlainTextComponentSerializer.plainText().serialize(advancementInfoComponent);
+
+            GameChatDiscord.send(player, new Embed().infoColor()
+                    .title(e.getPlayer().getName() + " has made the advancement " + advancementName)
+                    .description("- " + advancementInfo)
+                    .thumbnail(null)
+                    .build());
+        });
+    }
+
 }
