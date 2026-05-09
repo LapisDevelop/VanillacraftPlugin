@@ -13,6 +13,7 @@ public class GameChatModule {
         handle(new ChatListener());
         handle(new GameEventListener());
         jda.addEventListener(new DiscordChatListener());
+        jda.addEventListener(new PlayerlistCmd());
     }
 
     public void disable() {
