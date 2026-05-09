@@ -76,7 +76,7 @@ public class GameEventListener implements Listener {
 
             GameChatDiscord.send(player, new Embed().infoColor()
                     .title(e.getPlayer().getName() + " has made the advancement " + advancementName)
-                    .description("- " + advancementInfo)
+                    .description(advancementInfo)
                     .thumbnail(null)
                     .build());
         });

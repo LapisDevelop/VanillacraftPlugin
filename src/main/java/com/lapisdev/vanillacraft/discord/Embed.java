@@ -10,7 +10,7 @@ public class Embed {
     public String description = null;
     public Color color = null;
     public String thumbnailUrl = "https://i.ibb.co/YrpqTMM/vclogo.png";
-    public String footer = "Vanillacraft. No nonsense. Just Minecraft.";
+    public String footer = null;
 
     public Embed() {}
 
@@ -36,6 +36,11 @@ public class Embed {
 
     public Embed footer(String footer) {
         this.footer = footer;
+        return this;
+    }
+
+    public Embed footer() {
+        this.footer = "Vanillacraft. No nonsense. Just Minecraft.";
         return this;
     }
 

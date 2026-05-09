@@ -61,7 +61,7 @@ public class MckickCmdDc extends ListenerAdapter {
         }
         if (player == null) {
             e.replyEmbeds(new Embed().errorColor()
-                            .title("That player doesn't exist")
+                    .title("That player doesn't exist")
                     .description("...Well, at least, they haven't joined the server before. Are you sure you entered the username or discord ping correctly?")
                     .build()).setEphemeral(true).queue();
             return;
@@ -82,8 +82,9 @@ public class MckickCmdDc extends ListenerAdapter {
         User playerDc = jda.getUserById(player.discordUuid);
 
         e.replyEmbeds(new Embed().resultColor()
-                        .title("Kicked " + playerMc.getName() + " from the game.")
+                .title("Kicked " + playerMc.getName() + " from the game.")
                 .description("Reason: " + reasonComponent.content())
+                .footer()
                 .build()).queue();
 
         Kick kick = new Kick(player, reasonComponent);
