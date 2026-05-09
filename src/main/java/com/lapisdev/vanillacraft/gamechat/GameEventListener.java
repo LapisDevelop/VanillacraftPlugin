@@ -33,9 +33,10 @@ public class GameEventListener implements Listener {
             }
             playersOnline = playersOnline.substring(0, playersOnline.length() - 2);
 
-            GameChatDiscord.send(ServerPlayer.fromMinecraftUuid(e.getPlayer().getUniqueId()), new Embed().infoColor()
+            GameChatDiscord.send(ServerPlayer.fromMinecraftUuid(e.getPlayer().getUniqueId()), new Embed().resultColor()
                     .title(e.getPlayer().getName() + " rejoined the Minecraft server!")
                     .description("Players online: " + playersOnline)
+                    .thumbnail(null)
                     .build());
         });
     }
@@ -53,6 +54,7 @@ public class GameEventListener implements Listener {
             GameChatDiscord.send(player, new Embed().warnColor()
                     .title(e.getPlayer().getName() + " left the Minecraft server!")
                     .description("Players online: " + playersOnline)
+                    .thumbnail(null)
                     .build());
         });
     }
