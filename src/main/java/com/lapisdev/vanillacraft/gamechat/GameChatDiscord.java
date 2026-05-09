@@ -11,7 +11,7 @@ import static com.lapisdev.vanillacraft.discord.Discord.jda;
 
 public class GameChatDiscord {
     private static int lastWebhookUser = 0;
-    private static Webhook lastWebhook;
+    static Webhook lastWebhook;
 
     public static void send(ServerPlayer player, String message) {
         String username = Bukkit.getPlayer(player.minecraftUuid).getName();

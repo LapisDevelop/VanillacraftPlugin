@@ -13,4 +13,8 @@ public class GameChatModule {
         handle(new ChatListener());
         handle(new GameEventListener());
     }
+
+    public void disable() {
+        if (GameChatDiscord.lastWebhook != null) GameChatDiscord.lastWebhook.delete().queue();
+    }
 }
