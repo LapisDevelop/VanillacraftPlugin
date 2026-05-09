@@ -13,6 +13,6 @@ public class MaintenanceModule {
         });
         handle(new MaintenanceJoinListener());
 
-        jda.addEventListener(new MaintenanceCmdDc());
+//        jda.addEventListener(new MaintenanceCmdDc());
     }
 }
